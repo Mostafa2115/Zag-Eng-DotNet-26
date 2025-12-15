@@ -24,3 +24,25 @@ FROM Weather W1
 INNER JOIN Weather W2
 ON DATEDIFF(W1.recordDate, W2.recordDate) = 1
 WHERE W1.temperature > W2.temperature;
+
+/* problem 5 */
+SELECT Employees.emp_id,Employees.emp_name,COALESCE(Departments.dept_name, 'Unassigned') AS dept_name
+FROM Employees
+LEFT JOIN Departments
+ON Employees.dept_id = Departments.dept_id;
+
+/* problem 6 */
+SELECT Products.product_id,Products.product_name,Suppliers.supplier_name
+FROM Products
+LEFT JOIN Suppliers
+ON Products.supplier_id = Suppliers.supplier_id
+WHERE Products.product_name LIKE '%Phone%';
+
+/* problem 7 */
+SELECT CONCAT(Customers.first_name, ' ', Customers.last_name) AS full_name,Orders.order_id,Orders.amount
+FROM Customers
+FULL JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+
+
